@@ -16,7 +16,6 @@ ANALYSISDIR=${MAINDIR}/analysis
 SCRIPTSDIR=${MAINDIR}/scripts
 ############################################################################
 
-
 mkdir ${ANALYSISDIR}/${MYSUB}
 ANATDIR=${ANALYSISDIR}/${MYSUB}/anat
 mkdir ${ANATDIR}
@@ -26,10 +25,15 @@ mkdir ${ANATDIR}
 cp $0 ${ANALYSISDIR}/${MYSUB}/.
 
 
+
 #################### GET SESSION INFO ##################################
 file1=`find ${DICOMDIR}/${MYSUB}/*SAG_FSPGR_BRAVO* -type f -not -name ".DS_Store" | head -1;` 
 STUDYINFO=`dicom_hdr $file1 | egrep "ID Study Description" | cut -f5- -d "/"`
 DATE=`dicom_hinfo -tag 0008,0020 -no_name $file1`
+
+
+
+#################### GET COIL INFO ##################################
 COIL=`dicom_hinfo -tag 0018,1250 -no_name $file1`
 if [ "$COIL" = "Nova32ch" ]; then
 	MYCOIL=32ch
