@@ -35,7 +35,7 @@ DATE=`dicom_hinfo -tag 0008,0020 -no_name $file1`
 
 #################### GET COIL INFO ##################################
 COIL=`dicom_hinfo -tag 0018,1250 -no_name $file1`
-if [ "$COIL" = "Nova32ch" ]; then
+if [ "$COIL" = "RM:Nova32ch" ]; then
 	MYCOIL=32ch
 else
 	MYCOIL=12ch
