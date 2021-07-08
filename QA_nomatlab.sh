@@ -83,18 +83,6 @@ for f in ${DICOMDIR}/${MYSUB}/*PUSag_CUBE_T2*; do
 done
 
 
-
-#################### SWAN QA ###########################################
-dcm2niix -z y -b n -f %d_s%s_e%e ${DICOMDIR}/${MYSUB}/*-Ax_SWAN*
-dcm2niix -z y -b n -f %d_s%s_e%e ${DICOMDIR}/${MYSUB}/*-FILT_PHA_Ax_SWAN*
-dcm2niix -z y -b n -f %d_s%s_e%e ${DICOMDIR}/${MYSUB}/*MIN_IP*
-mv ${DICOMDIR}/${MYSUB}/*-Ax_SWAN*/*.nii.gz ${ANALYSISDIR}/${MYSUB}/anat/SWAN_mag.nii.gz
-mv ${DICOMDIR}/${MYSUB}/*-FILT_PHA_Ax_SWAN*/*.nii.gz ${ANALYSISDIR}/${MYSUB}/anat/SWAN_phase.nii.gz
-mv ${DICOMDIR}/${MYSUB}/*MIN_IP*/*.nii.gz ${ANALYSISDIR}/${MYSUB}/anat/SWAN_MIN_IP.nii.gz
-fsleyes ${ANALYSISDIR}/${MYSUB}/anat/SWAN_mag ${ANALYSISDIR}/${MYSUB}/anat/SWAN_phase &
-fsleyes ${ANALYSISDIR}/${MYSUB}/anat/SWAN_MIN_IP &
-
-
 #################### FLAIR QA ###########################################
 dcm2niix -z y -b n -f %d_s%s_e%e ${DICOMDIR}/${MYSUB}/*Ax_FLAIR*
 mv ${DICOMDIR}/${MYSUB}/*FLAIR*/*.nii.gz ${ANALYSISDIR}/${MYSUB}/anat/flair.nii.gz
